@@ -29,6 +29,8 @@ public class NAssociado {
         } else {
             passociado.alterar(associado);
         }
+        
+        //Alterando o código
     }
 
     public void excluir(int codigo) throws SQLException, Exception {
