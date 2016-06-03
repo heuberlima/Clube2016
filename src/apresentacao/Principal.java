@@ -5,6 +5,8 @@
  */
 package apresentacao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HeuberLima
@@ -43,8 +45,13 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem2.setText("jMenuItem2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("iClub  - Sistema para Automação de Clubes");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -89,6 +96,11 @@ public class Principal extends javax.swing.JFrame {
 
         menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         menuSair.setText("Sair");
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairActionPerformed(evt);
+            }
+        });
         jMenu4.add(menuSair);
 
         jMenuBar1.add(jMenu4);
@@ -110,13 +122,35 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuTipoAssociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTipoAssociadoActionPerformed
-        // TODO add your handling code here:
+       
+        TipoAssociadoCadastro janelaTipos = new TipoAssociadoCadastro();
+        this.jDesktopPane1.add(janelaTipos);
+        janelaTipos.setVisible(true);
+        
     }//GEN-LAST:event_menuTipoAssociadoActionPerformed
 
     private void menuAssociadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAssociadosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuAssociadosActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        sair();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+        sair();
+    }//GEN-LAST:event_menuSairActionPerformed
+
+    private void sair(){
+    
+        int resposta = JOptionPane.showConfirmDialog(null,
+                 "Confirma a saída do Sistema?", "iClub",
+                JOptionPane.YES_NO_OPTION);
+        if (resposta == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
