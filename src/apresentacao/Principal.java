@@ -18,7 +18,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        
+
         //Maximiza a tela
         this.setExtendedState(MAXIMIZED_BOTH);
     }
@@ -40,6 +40,7 @@ public class Principal extends javax.swing.JFrame {
         menuTipoAssociado = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        mnuPesquisaAssociado = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenuItem();
 
@@ -90,6 +91,16 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Relatórios");
+
+        mnuPesquisaAssociado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        mnuPesquisaAssociado.setText("Pesquisar Associado");
+        mnuPesquisaAssociado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuPesquisaAssociadoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mnuPesquisaAssociado);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Sair");
@@ -122,15 +133,23 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuTipoAssociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTipoAssociadoActionPerformed
-       
+
         TipoAssociadoCadastro janelaTipos = new TipoAssociadoCadastro();
         this.jDesktopPane1.add(janelaTipos);
         janelaTipos.setVisible(true);
-        
+
+        util.Forms.centraliza(janelaTipos);
+
+
     }//GEN-LAST:event_menuTipoAssociadoActionPerformed
 
     private void menuAssociadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAssociadosActionPerformed
-        // TODO add your handling code here:
+        AssociadoCadastro janelaAssociado = new AssociadoCadastro();
+        this.jDesktopPane1.add(janelaAssociado);
+        janelaAssociado.setVisible(true);
+
+        util.Forms.centraliza(janelaAssociado);
+
     }//GEN-LAST:event_menuAssociadosActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -141,16 +160,25 @@ public class Principal extends javax.swing.JFrame {
         sair();
     }//GEN-LAST:event_menuSairActionPerformed
 
-    private void sair(){
-    
+    private void mnuPesquisaAssociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPesquisaAssociadoActionPerformed
+        AssociadoPesquisa janela = new AssociadoPesquisa(this.jDesktopPane1);
+        this.jDesktopPane1.add(janela);
+        janela.setVisible(true);
+
+        util.Forms.centraliza(janela);
+
+    }//GEN-LAST:event_mnuPesquisaAssociadoActionPerformed
+
+    private void sair() {
+
         int resposta = JOptionPane.showConfirmDialog(null,
-                 "Confirma a saída do Sistema?", "iClub",
+                "Confirma a saída do Sistema?", "iClub",
                 JOptionPane.YES_NO_OPTION);
         if (resposta == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -197,5 +225,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAssociados;
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JMenuItem menuTipoAssociado;
+    private javax.swing.JMenuItem mnuPesquisaAssociado;
     // End of variables declaration//GEN-END:variables
 }

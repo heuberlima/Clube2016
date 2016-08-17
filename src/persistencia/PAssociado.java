@@ -25,7 +25,7 @@ public class PAssociado {
             //Cria a string com o sql para ser executado
             String sql = "INSERT INTO associado ( nome,"
                     + "endereco, telefone, "
-                    + "codigo_tipo_associado) VALUES (?, ?, ?, ?, ?)";
+                    + "codigo_tipo_associado) VALUES (?, ?, ?, ?)";
 
             //Cria o objeto de conexão com o banco
             Connection cnn = util.Conexao.getConexao();
@@ -37,7 +37,7 @@ public class PAssociado {
             prd.setString(1, parametro.getNome());
             prd.setString(2, parametro.getEndereco());
             prd.setString(3, parametro.getTelefone());
-            prd.setInt(5, parametro.getTipoAssociado().getCodigo());
+            prd.setInt(4, parametro.getTipoAssociado().getCodigo());
 
             //Executa o SQL no banco de dados
             prd.execute();
